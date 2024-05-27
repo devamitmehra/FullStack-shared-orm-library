@@ -1,0 +1,30 @@
+{
+  "name": "shared-orm-library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "typeorm": "dotenv -e ./development.env -- ts-node ./node_modules/typeorm/cli",
+    "migration:run": "npm run typeorm -- migration:run -d dist/data-source.js",
+    "migration:revert": "npm run typeorm -- migration:revert -d dist/data-source.js",
+    "migration:generate": "npm run typeorm -- migration:generate -d dist/data-source.js -n",
+    "start": "dotenv -e ./env -- ts-node src/index.ts",
+    "seed": "dotenv -e ./development.env -- ts-node src/seeder/dummyuserseeder.ts"
+  },
+  "dependencies": {
+    "@nestjs/common": "^8.0.0",
+    "@nestjs/core": "^8.0.0",
+    "@nestjs/typeorm": "^8.0.0",
+    "bcrypt": "^5.1.1",
+    "pg": "^8.7.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.20"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "dotenv-cli": "^7.4.2",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.3.5"
+  }
+}
